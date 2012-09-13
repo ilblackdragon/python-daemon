@@ -47,10 +47,10 @@ class Daemon(object):
 
     def daemonize(self):
         """
-          Do the UNIX double-fork magic, see Stevens' "Advanced
-          Programming in the UNIX Environment" for details (ISBN 0201563177)
-          http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
-          """
+        Do the UNIX double-fork magic, see Stevens' "Advanced
+        Programming in the UNIX Environment" for details (ISBN 0201563177)
+        http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
+        """
         try:
             pid = os.fork()
             if pid > 0:
@@ -106,10 +106,10 @@ class Daemon(object):
     def delpid(self):
         os.remove(self.pidfile)
 
-    def start(self, *args, **kwargs):
+    def start(self):
         """
-          Start the daemon
-          """
+        Start the daemon
+        """
 
         if self.verbose >= 1:
             print "Starting..."
@@ -131,12 +131,12 @@ class Daemon(object):
 
         # Start the daemon
         self.daemonize()
-        self.run(*args, **kwargs)
+        self.run()
 
     def stop(self):
         """
-          Stop the daemon
-          """
+        Stop the daemon
+        """
 
         if self.verbose >= 1:
             print "Stopping..."
@@ -180,14 +180,14 @@ class Daemon(object):
 
     def restart(self):
         """
-          Restart the daemon
-          """
+        Restart the daemon
+        """
         self.stop()
         self.start()
 
     def run(self):
         """
-          You should override this method when you subclass Daemon. It will be called after the process has been
-          daemonized by start() or restart().
-          """
+        You should override this method when you subclass Daemon. It will be called after the process has been
+        daemonized by start() or restart().
+        """
 
