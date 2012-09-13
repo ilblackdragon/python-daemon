@@ -21,6 +21,7 @@
 
 # Core modules
 import atexit
+import errno
 import os
 import sys
 import time
@@ -104,7 +105,13 @@ class Daemon(object):
         file(self.pidfile, 'w+').write("%s\n" % pid)
 
     def delpid(self):
-        os.remove(self.pidfile)
+        try:
+            os.remove(self.pidfile)
+        except OSError as e:
+            if e.errno == errno.ENOENT:
+                pass
+            else:
+                raise
 
     def start(self):
         """
