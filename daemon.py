@@ -97,6 +97,7 @@ class Daemon(object):
 
         def sigtermhandler(signum, frame):
             self.daemon_alive = False
+            sys.exit()
 
         signal.signal(signal.SIGTERM, sigtermhandler)
         signal.signal(signal.SIGINT, sigtermhandler)
