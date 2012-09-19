@@ -39,7 +39,7 @@ class Daemon(object):
 
     def __init__(self, pidfile, stdin=os.devnull, stdout=os.devnull,
                  stderr=os.devnull, home_dir='.', umask=022,
-                 verbose=1):
+                 verbose=1, gevent=False):
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
@@ -48,6 +48,7 @@ class Daemon(object):
         self.verbose = verbose
         self.umask = umask
         self.daemon_alive = True
+        self.gevent = gevent
 
     def daemonize(self):
         """
@@ -99,8 +100,14 @@ class Daemon(object):
             self.daemon_alive = False
             sys.exit()
 
-        signal.signal(signal.SIGTERM, sigtermhandler)
-        signal.signal(signal.SIGINT, sigtermhandler)
+        if self.gevent:
+            import gevent
+            gevent.reinit()
+            gevent.signal(signal.SIGTERM, sigtermhandler)
+            gevent.signal(signal.SIGINT, sigtermhandler)
+        else:
+            signal.signal(signal.SIGTERM, sigtermhandler)
+            signal.signal(signal.SIGINT, sigtermhandler)
 
         if self.verbose >= 1:
             print "Started"
