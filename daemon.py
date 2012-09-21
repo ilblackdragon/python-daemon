@@ -103,8 +103,8 @@ class Daemon(object):
         if self.gevent:
             import gevent
             gevent.reinit()
-            gevent.signal(signal.SIGTERM, sigtermhandler)
-            gevent.signal(signal.SIGINT, sigtermhandler)
+            gevent.signal(signal.SIGTERM, sigtermhandler, signal.SIGTERM, None)
+            gevent.signal(signal.SIGINT, sigtermhandler, signal.SIGINT, None)
         else:
             signal.signal(signal.SIGTERM, sigtermhandler)
             signal.signal(signal.SIGINT, sigtermhandler)
