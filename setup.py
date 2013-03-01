@@ -5,7 +5,7 @@
 import os
 from setuptools import setup, find_packages
 
-from pymisc import VERSION, PROJECT
+from deamon import VERSION, PROJECT
 
 def read( fname ):
     try:
