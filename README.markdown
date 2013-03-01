@@ -21,6 +21,14 @@ Create a new object of your class, specifying where you want your PID file to ex
 	pineMarten = pantalaimon('/path/to/pid.pid')
 	pineMarten.start()
 
+or, use `run_deamon(cls, path_to_pid)` to handle start\stop\restart arguments and show usage for you:
+
+    from deamon import Daemon, run_deamon
+
+    ...
+
+    run_deamon(Daemon, '/path/to/pid.pid')
+
 Actions
 ---------------------
 
