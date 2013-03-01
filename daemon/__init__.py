@@ -29,6 +29,9 @@ import sys
 import time
 import signal
 
+VERSION = __version__ = "0.1.0"
+PROJECT = __project__ = "deamon"
+
 
 class Daemon(object):
     """
@@ -217,3 +220,25 @@ class Daemon(object):
         It will be called after the process has been daemonized by start() or
         restart().
         """
+        pass
+
+def run_daemon(cls, pid_file, *args, **kwargs):
+    """Main function to call to create deamon and handle execution arguments"""
+    assert(issubclass(cls, Deamon))
+    daemon = cls(pid_file, *args, **kwargs)
+    command = sys.argv[1] if len(sys.argv) > 1 else '--help'
+    if command in ("start", "--start"):
+        daemon.start()
+    elif command in ("stop", "--stop"):
+        daemon.stop()
+    elif command in ("restart", "--restart"):
+        daemon.restart()
+    elif command in ("pid"):
+        pid = open(pid_file, "r").read()
+        print("PID: %s" % pid)
+    else:
+        print("""Usage: 
+ start, --start         to start deamon
+ stop, --stop           to stop deamon
+ restart, --restart     to restart deamon""")
+
