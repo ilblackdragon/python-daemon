@@ -5,7 +5,7 @@
 import os
 from setuptools import setup, find_packages
 
-from deamon import VERSION, PROJECT
+from daemon import VERSION, PROJECT
 
 def read( fname ):
     try:
@@ -24,9 +24,6 @@ META_DATA = dict(
     author_email = "ilblackdragon@gmail.com",
 
     url = "https://github.com/ilblackdragon/python-deamon.git",
-
-    packages = find_packages(),
-    package_data = { '': PACKAGE_DATA, },
 
     install_requires = [ ],
 )

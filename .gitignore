@@ -1,0 +1,11 @@
+#Git ignore files
+*.swp
+*.pyc
+*.obj
+*.db
+.svn
+.git
+env/
+build/
+dist/
+daemon.egg-info/
