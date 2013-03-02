@@ -233,6 +233,8 @@ def run_daemon(cls, pid_file, *args, **kwargs):
         daemon.stop()
     elif command in ("restart", "--restart"):
         daemon.restart()
+    elif command in ("run", "--run"):
+        daemon.run()
     elif command in ("pid"):
         pid = open(pid_file, "r").read()
         print("PID: %s" % pid)
@@ -240,5 +242,6 @@ def run_daemon(cls, pid_file, *args, **kwargs):
         print("""Usage: 
  start, --start         to start daemon
  stop, --stop           to stop daemon
- restart, --restart     to restart daemon""")
+ restart, --restart     to restart daemon
+ run, --run             to run without daemonization of the process (for debug purposes)""")
 

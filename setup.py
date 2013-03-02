@@ -1,4 +1,4 @@
-"""Setup for python-deamon package forker from:
+"""Setup for python-daemon package forker from:
     https://github.com/wwwjfy/python-daemon and https://github.com/serverdensity/python-daemon/
 """
 
@@ -23,7 +23,7 @@ META_DATA = dict(
     author = "Illia Polosukhin",
     author_email = "ilblackdragon@gmail.com",
 
-    url = "https://github.com/ilblackdragon/python-deamon.git",
+    url = "https://github.com/ilblackdragon/python-daemon.git",
 
     packages = find_packages(),
 

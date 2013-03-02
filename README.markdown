@@ -10,26 +10,26 @@ Usage
 
 Define a class which inherits from `Daemon` and has a `run()` method (which is what will be called once the daemonization is completed.
 
-	from daemon import Daemon
+	from daemon import Daemon, run_daemon
 	
-	class pantalaimon(Daemon):
+	class Pantalaimon(Daemon):
 		def run(self):
 			# Do stuff
 			
-Create a new object of your class, specifying where you want your PID file to exist:
+In main.py (main script that will be called) run daemon with `run_daemon(daemon_class, path_to_pid)`, specifying where you want your PID file to exist:
 
-	pineMarten = pantalaimon('/path/to/pid.pid')
-	pineMarten.start()
+    if __name__ == "__main__":
+        run_daemon(Pantalaimon, '/path/to/pid.pid')
 
-or, use `run_deamon(cls, path_to_pid)` to handle start\stop\restart arguments and show usage for you:
+To start daemon:
+    
+    ./main.py start
 
-    from deamon import Daemon, run_deamon
+To stop daemon:
+    
+    ./main.py stop
 
-    ...
-
-    run_deamon(Daemon, '/path/to/pid.pid')
-
-Actions
+Actions in Daemon
 ---------------------
 
 * `start()` - starts the daemon (creates PID and daemonizes).
