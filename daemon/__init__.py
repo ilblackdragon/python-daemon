@@ -30,7 +30,7 @@ import time
 import signal
 
 VERSION = __version__ = "0.1.0"
-PROJECT = __project__ = "deamon"
+PROJECT = __project__ = "python-daemon"
 
 
 class Daemon(object):
