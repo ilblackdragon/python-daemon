@@ -223,8 +223,8 @@ class Daemon(object):
         pass
 
 def run_daemon(cls, pid_file, *args, **kwargs):
-    """Main function to call to create deamon and handle execution arguments"""
-    assert(issubclass(cls, Deamon))
+    """Main function to call to create daemon and handle execution arguments"""
+    assert(issubclass(cls, Daemon))
     daemon = cls(pid_file, *args, **kwargs)
     command = sys.argv[1] if len(sys.argv) > 1 else '--help'
     if command in ("start", "--start"):
@@ -238,7 +238,7 @@ def run_daemon(cls, pid_file, *args, **kwargs):
         print("PID: %s" % pid)
     else:
         print("""Usage: 
- start, --start         to start deamon
- stop, --stop           to stop deamon
- restart, --restart     to restart deamon""")
+ start, --start         to start daemon
+ stop, --stop           to stop daemon
+ restart, --restart     to restart daemon""")
 
