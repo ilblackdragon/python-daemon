@@ -25,6 +25,8 @@ META_DATA = dict(
 
     url = "https://github.com/ilblackdragon/python-deamon.git",
 
+    packages = find_packages(),
+
     install_requires = [ ],
 )
 
